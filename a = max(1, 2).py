@@ -1,3 +1,4 @@
+# The code is creating a string `s` that consists of 7 repetitions of the character '8'.
 s = 7 * "8"
 
 sp = []
