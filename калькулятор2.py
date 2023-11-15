@@ -171,7 +171,7 @@ def calculator():  # Обьявление функции calculator
     elif choice == '16':
         x = float(input("Введите значение тангенса угла: "))
         print(math.atan(x))
-    
+
     elif choice == '17':
         x = float(input("Введите число: "))
         print(math.sqrt(x))
