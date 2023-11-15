@@ -8,6 +8,9 @@ def weight_converter(): # Определение функцию weight_converter
 
     choice = input("Введите номер конвертера: ") # Обьявление переменной choise, вывод текста на экран и ожидание ввода значения от пользователя
 
+    # This code block checks if the user's choice is one of the options '1', '2', '3', or '4'. If it
+    # is, it prompts the user to enter a value and converts it to a float data type. This value will
+    # be used in the subsequent calculations based on the user's choice.
     if choice in ['1', '2', '3', '4']:
         value = float(input("Введите значение: "))
 
