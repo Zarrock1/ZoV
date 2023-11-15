@@ -1,12 +1,16 @@
-def weight_converter(): # Определение функцию weight_converter (сделано для удобства)
-   
-    print("Выберите конвертер мер и весов:")# это команда печати текста
-    print("1. Килограммы в фунты")# это команда печати текста
-    print("2. Фунты в килограммы")# это команда печати текста
-    print("3. Километры в мили")# это команда печати текста
-    print("4. Мили в километры")# это команда печати текста
+import math
 
-    choice = input("Введите номер конвертера: ") # Обьявление переменной choise, вывод текста на экран и ожидание ввода значения от пользователя
+
+def weight_converter():  # Определение функцию weight_converter (сделано для удобства)
+
+    print("Выберите конвертер мер и весов:")  # это команда печати текста
+    print("1. Килограммы в фунты")  # это команда печати текста
+    print("2. Фунты в килограммы")  # это команда печати текста
+    print("3. Километры в мили")  # это команда печати текста
+    print("4. Мили в километры")  # это команда печати текста
+
+    # Обьявление переменной choise, вывод текста на экран и ожидание ввода значения от пользователя
+    choice = input("Введите номер конвертера: ")
 
     # This code block checks if the user's choice is one of the options '1', '2', '3', or '4'. If it
     # is, it prompts the user to enter a value and converts it to a float data type. This value will
@@ -34,13 +38,15 @@ def weight_converter(): # Определение функцию weight_converter
         print("Ошибка! Неверный выбор конвертера мер и весов.")
 
 
-def calculate_interest(principal, rate, time): # Объявление функции calculate_interest с параметрами principal, rate, time (также для удобства) 
-    interest = principal * rate * time / 100 # Вычисление процентной ставки (доходности вклада) по формуле: Принципал * Ставка * Время / 100
-    return interest # Возвращение рассчитанной процентной ставки
+# Объявление функции calculate_interest с параметрами principal, rate, time (также для удобства)
+def calculate_interest(principal, rate, time):
+    # Вычисление процентной ставки (доходности вклада) по формуле: Принципал * Ставка * Время / 100
+    interest = principal * rate * time / 100
+    return interest  # Возвращение рассчитанной процентной ставки
 
 
-def calculator(): # Обьявление функции calculator  
-     # Вывод приветствия в консоль
+def calculator():  # Обьявление функции calculator
+    # Вывод приветствия в консоль
     print("Добро пожаловать в Калькулятор!")
     print("Я могу выполнять следующие операции:")
     print("1. Сложение")
@@ -53,15 +59,22 @@ def calculator(): # Обьявление функции calculator
     print("8. Конвертер мер и весов")
     print("9. Рассчет доходности вклада")
     print("10. Перевод из различных систем счисления в десятичную")
+    print("11. Синус угла")
+    print("12. Косинус угла")
+    print("13. Тангенс угла")
+    print("14. Арксинус угла")
+    print("15. Арккосинус угла")
+    print("16. Арктангенс угла")
+    print("17. Корень числа")
     # Вывод доступных операций в консоль
 
-    choice = input("Выберите операцию (введите соответствующий номер): ") # Получение выбора пользователя в переменную choice
+    # Получение выбора пользователя в переменную choice
+    choice = input("Выберите операцию (введите соответствующий номер): ")
 
     if choice in ['1', '2', '3', '4', '5', '7']:
         num_1 = float(input('Введите первое число: '))
         num_2 = float(input('Введите второе число: '))
         # Если выбраны операции, требующие ввода двух чисел, считываем их с клавиатуры и преобразуем в тип float
-
 
     elif choice in ['6']:
         num_1 = float(input('Введите число: '))
@@ -128,6 +141,40 @@ def calculator(): # Обьявление функции calculator
         base = int(input("Введите основание системы счисления: "))
         decimal_number = int(number, base)
         print(f"{number} в десятичной системе: {decimal_number}")
+
+    elif choice == '11':
+        x = float(input("Введите угол: "))
+        print(math.sin(x))
+
+    elif choice == '12':
+        x = float(input("Введите угол: "))
+        print(math.cos(x))
+
+    elif choice == '13':
+        x = float(input("Введите угол: "))
+        print(math.tan(x))
+
+    elif choice == '14':
+        x = float(input("Введите значение синуса угла (-1 <= x <= 1): "))
+        if x < -1 and x > 1:
+            print(math.asin(x))
+        else:
+            print("Выбран неправильный диапазон.")
+
+    elif choice == '15':
+        x = float(input("Введите значение косинуса угла (-1 <= x <= 1): "))
+        if x < -1 and x > 1:
+            print(math.acos(x))
+        else:
+            print("Выбран неправильный диапазон.")
+
+    elif choice == '16':
+        x = float(input("Введите значение тангенса угла: "))
+        print(math.atan(x))
+    
+    elif choice == '17':
+        x = float(input("Введите число: "))
+        print(math.sqrt(x))
 
     else:
         print("Ошибка! Неверный выбор операции.")
