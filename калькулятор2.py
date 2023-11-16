@@ -155,18 +155,14 @@ def calculator():  # Обьявление функции calculator
         print(math.tan(x))
 
     elif choice == '14': # Вычисление арксинуса угла
-        x = float(input("Введите значение синуса угла (-1 <= x <= 1): "))
-        if x < -1 and x > 1:
-            print(math.asin(x))
-        else:
-            print("Выбран неправильный диапазон.")
+        x = float(input("Введите угол: "))
+        x_rad = x*math.pi/180
+        print(math.asin(x_rad))
 
     elif choice == '15': # Вычисление арккосинуса угла
-        x = float(input("Введите значение косинуса угла (-1 <= x <= 1): "))
-        if x < -1 and x > 1:
-            print(math.acos(x))
-        else:
-            print("Выбран неправильный диапазон.")
+        x = float(input("Введите угол: "))
+        x_rad = x*math.pi/180
+        print(math.acos(x_rad))
 
     elif choice == '16':# Вычисление арктангенса угла
         x = float(input("Введите значение тангенса угла: "))
@@ -182,3 +178,5 @@ def calculator():  # Обьявление функции calculator
 
 # Запуск калькулятора
 calculator()
+
+# сделать с 11 функции до конца сделать красивый вывод и заккоментировать!!!!!!!!!!!!!!!!!
