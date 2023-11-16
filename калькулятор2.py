@@ -142,37 +142,37 @@ def calculator():  # Обьявление функции calculator
         decimal_number = int(number, base)
         print(f"{number} в десятичной системе: {decimal_number}")
 
-    elif choice == '11':
+    elif choice == '11': # Вычисление синуса угла 
         x = float(input("Введите угол: "))
         print(math.sin(x))
 
-    elif choice == '12':
+    elif choice == '12': # Вычисление косинуса угла
         x = float(input("Введите угол: "))
         print(math.cos(x))
 
-    elif choice == '13':
+    elif choice == '13': # Вычисление тангенса угла
         x = float(input("Введите угол: "))
         print(math.tan(x))
 
-    elif choice == '14':
+    elif choice == '14': # Вычисление арксинуса угла
         x = float(input("Введите значение синуса угла (-1 <= x <= 1): "))
         if x < -1 and x > 1:
             print(math.asin(x))
         else:
             print("Выбран неправильный диапазон.")
 
-    elif choice == '15':
+    elif choice == '15': # Вычисление арккосинуса угла
         x = float(input("Введите значение косинуса угла (-1 <= x <= 1): "))
         if x < -1 and x > 1:
             print(math.acos(x))
         else:
             print("Выбран неправильный диапазон.")
 
-    elif choice == '16':
+    elif choice == '16':# Вычисление арктангенса угла
         x = float(input("Введите значение тангенса угла: "))
         print(math.atan(x))
 
-    elif choice == '17':
+    elif choice == '17': # Вычисление корня числа
         x = float(input("Введите число: "))
         print(math.sqrt(x))
 
