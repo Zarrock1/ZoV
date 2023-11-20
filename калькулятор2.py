@@ -144,33 +144,33 @@ def calculator():  # Обьявление функции calculator
 
     elif choice == '11': # Вычисление синуса угла 
         x = float(input("Введите угол: "))
-        print(math.sin(x))
+        print(f"Синус угла {x} : {math.sin(x)}")
 
     elif choice == '12': # Вычисление косинуса угла
         x = float(input("Введите угол: "))
-        print(math.cos(x))
+        print(f"Косинус угла {x} : {math.cos(x)}")
 
     elif choice == '13': # Вычисление тангенса угла
         x = float(input("Введите угол: "))
-        print(math.tan(x))
+        print(f"Тангенс угла {x} : {math.tan(x)}")
 
     elif choice == '14': # Вычисление арксинуса угла
         x = float(input("Введите угол: "))
         x_rad = x*math.pi/180
-        print(math.asin(x_rad))
+        print(f"Арксинус угла {x} : {math.asin(x_rad)}")
 
     elif choice == '15': # Вычисление арккосинуса угла
         x = float(input("Введите угол: "))
         x_rad = x*math.pi/180
-        print(math.acos(x_rad))
+        print(f"Арккосинус угла {x} : {math.acos(x_rad)}")
 
     elif choice == '16':# Вычисление арктангенса угла
         x = float(input("Введите значение тангенса угла: "))
-        print(math.atan(x))
+        print(f"Тангенс угла {x} : {math.atan(x)}")
 
     elif choice == '17': # Вычисление корня числа
         x = float(input("Введите число: "))
-        print(f"Корень числа {x} : {math.sqrt(x)}")## вот так сделай!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!ТУТ
+        print(f"Корень числа {x} : {math.sqrt(x)}")
   
     else:
         print("Ошибка! Неверный выбор операции.")
@@ -178,5 +178,3 @@ def calculator():  # Обьявление функции calculator
 
 # Запуск калькулятора
 calculator()
-
-# сделать с 11 функции до конца сделать красивый вывод
