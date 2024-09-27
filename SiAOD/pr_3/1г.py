@@ -4,9 +4,8 @@ def calculate_series(n):
         sum_series += (-1)**(i + 1) / (i * (i + 1))
     return sum_series
 
-# Ввод значения n
 n = int(input("Введите n: "))
-
-# Вычисление и вывод результата
 result = calculate_series(n)
-print(f"Результат: {result}")
+
+# Округляем результат до 9 знаков после запятой
+print(f"Результат: {result:.9f}")
