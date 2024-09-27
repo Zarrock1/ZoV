@@ -1,0 +1,17 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"name": "myrep",
+			"path": "myrep"
+		}
+	],
+	"settings": {
+		"files.associations": {
+			"numeric": "cpp",
+			"iostream": "cpp"
+		}
+	}
+}
