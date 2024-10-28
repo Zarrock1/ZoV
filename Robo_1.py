@@ -1,0 +1,104 @@
+import requests
+
+# Глобальные переменные
+maze_size = 16  # Размер лабиринта
+walls = [[0] * maze_size for _ in range(maze_size)]  # Двумерный массив для хранения стенок
+directions = ["up", "right", "down", "left"]  # Направления движения
+current_direction = 0  # Индекс текущего направления (0: up, 1: right, 2: down, 3: left)
+
+def move_forward(token):
+    """Перемещает робота вперед."""
+    url = "http://127.0.0.1:8801/api/v1/robot-cells/forward"
+    params = {"token": token}
+    
+    response = requests.post(url, params=params)
+    if response.status_code == 200:
+        print(f"Робот двигается вперед. Ответ сервера: {response.json()}")
+        return response.json()
+    else:
+        print(f"Ошибка при перемещении вперед: {response.status_code} - {response.text}")
+        return None
+
+def move_right(token):
+    """Поворачивает робота направо."""
+    global current_direction
+    url = "http://127.0.0.1:8801/api/v1/robot-cells/right"
+    params = {"token": token}
+    
+    response = requests.post(url, params=params)
+    if response.status_code == 200:
+        current_direction = (current_direction + 1) % 4  # Изменение направления
+        print(f"Робот повернул направо. Текущее направление: {directions[current_direction]}")
+        return response.json()
+    else:
+        print(f"Ошибка при повороте направо: {response.status_code} - {response.text}")
+        return None
+
+def get_sensor_data(token):
+    """Получает данные с датчиков робота."""
+    url = "http://127.0.0.1:8801/api/v1/sensor-data"
+    params = {"token": token}
+    
+    response = requests.get(url, params=params)
+    if response.status_code == 200:
+        print(f"Данные с датчиков: {response.json()}")
+        return response.json()
+    else:
+        print(f"Ошибка получения данных с датчиков: {response.status_code} - {response.text}")
+        return None
+
+def can_move_forward(token):
+    """Проверяет, можно ли двигаться вперед."""
+    sensor_data = get_sensor_data(token)
+    if sensor_data:
+        print(f"Проверяем, можно ли двигаться вперед: {sensor_data}")
+        return sensor_data.get('walls', 1) == 0  # 0 - нет стены, 1 - есть стена
+    return False
+
+def explore_maze(token):
+    """Изучает лабиринт и записывает данные о стенах."""
+    x, y = 0, 0  # Начальная позиция робота
+    steps = 0  # Счётчик шагов
+
+    while steps < 10:  # Ограничим количество шагов для тестирования
+        print(f"Текущая позиция: ({x}, {y}), направление: {directions[current_direction]}")
+
+        # Получаем данные с датчи
+        sensor_data = get_sensor_data(token)
+        if sensor_data:
+            walls[x][y] = sensor_data.get('walls', 0)  # Записываем данные о стенах в массив
+
+        # Проверяем, можно ли двигаться вперед
+        if can_move_forward(token):
+            move_forward(token)  # Двигаемся вперед
+            # Обновляем позицию
+            if current_direction == 0:  # Вверх
+                x -= 1
+            elif current_direction == 1:  # Вправо
+                y += 1
+            elif current_direction == 2:  # Вниз
+                x += 1
+            elif current_direction == 3:  # Влево
+                y -= 1
+            print(f"Робот двинулся вперед. Новая позиция: ({x}, {y})")
+        else:
+            # Если не можем двигаться вперед, то поворачиваем направо
+            print(f"Впереди стена, поворачиваем направо.")
+            move_right(token)
+
+        # Проверяем границы
+        if x < 0 or x >= maze_size or y < 0 or y >= maze_size:
+            print(f"Выход за границы: ({x}, {y})")
+            break
+
+        steps += 1  # Увеличиваем количество шагов
+
+def main():
+    token = "c889f3b5-1ee8-4e84-baed-8c9c162b706abb7e31da-313b-4348-9be2-8e80db3a3b3d"
+    explore_maze(token)
+    print("Стены в лабиринте:")
+    for row in walls:
+        print(row)  # Вывод массива стен
+
+if __name__ == "__main__":
+    main()
