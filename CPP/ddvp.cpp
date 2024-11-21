@@ -1,22 +1,5 @@
-#include <iostream>
-#include <string>
-using namespace std;
+char aaa[a + 1] = {0};
 
-int main()
-{
-    setlocale (LC_ALL, "Ru.UTF-8");
-
-    string fnd;
-    string vst;
-
-    getline(cin, fnd);
-    getline(cin, vst);
-
-    int pos = fnd.find("<-here->");
-
-    fnd.erase(pos, 8);
-    fnd.replace(pos, vst.length(), vst);
+    content.seekg(0);    
     
-    cout << fnd;
-
-}
+    content.read(aaa,content.ios::ate);

@@ -57,10 +57,7 @@ print(f"Число {'-' if is_negative else ''}{number} из системы с �
 print(f"В компьютерном виде: {computer_format}")
 
 # Перевод числа в двоичный формат для отображения в байтах
-if to_base == 2:
-    binary_string = converted.zfill(32)
-else:
-    binary_string = bin(abs(decimal_number))[2:].zfill(32)
+binary_string = bin(decimal_number & 0xFFFFFFFF)[2:].zfill(32)
 
 # Разбиение на байты
 byte1 = binary_string[:8]
@@ -85,3 +82,27 @@ print(f"4-й байт: {decimal_byte4} ({byte4})")
 # Вывод байтов в строку через пробел
 byte_string = f"{byte1} {byte2} {byte3} {byte4}"
 print(f"Байты в битах: {byte_string}")
+
+# Прямой, обратный и дополнительный коды
+if is_negative:
+    # Прямой код
+    sign_bit = '1'
+    magnitude = bin(abs(decimal_number))[2:].zfill(31)
+    direct_code = sign_bit + magnitude
+
+    # Обратный код
+    inverted_bits = ''.join('1' if bit == '0' else '0' for bit in magnitude)
+    reverse_code = sign_bit + inverted_bits
+
+    # Дополнительный код
+    additional_code = bin(int(reverse_code, 2) + 1)[2:].zfill(32)
+else:
+    # Для положительных чисел все три кода одинаковы
+    direct_code = binary_string
+    reverse_code = binary_string
+    additional_code = binary_string
+
+print(f"\n{'='*40}\nКоды числа:\n{'='*40}")
+print(f"Прямой код:       {direct_code}")
+print(f"Обратный код:     {reverse_code}")
+print(f"Дополнительный код: {additional_code}")
