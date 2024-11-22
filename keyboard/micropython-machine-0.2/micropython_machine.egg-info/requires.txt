@@ -1,3 +1,0 @@
-micropython-ffilib
-micropython-os
-micropython-signal
